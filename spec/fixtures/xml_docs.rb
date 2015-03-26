@@ -1,6 +1,39 @@
 module XmlDocs
 
   ##
+  # Simple CSW document from Data.Gov
+  def simple_csw
+    <<-xml
+      <csw:Record xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns:csw="http://www.opengis.net/cat/csw/2.0.2" xmlns:dct="http://purl.org/dc/terms/" xmlns:ows="http://www.opengis.net/ows">
+        <dc:identifier>RGIS::192fc31f-a713-44f2-98af-a1c8997f3e72::ISO-19115:2003</dc:identifier>
+        <dc:title>Wild and Scenic Rivers</dc:title>
+        <dc:type>dataset</dc:type>
+        <dc:subject>Federal lands</dc:subject>
+        <dc:subject>Parkways</dc:subject>
+        <dc:subject>Rivers</dc:subject>
+        <dc:subject>Scenic Rivers</dc:subject>
+        <dc:subject>Wild and Scenic Rivers</dc:subject>
+        <dc:subject>United States</dc:subject>
+        <dc:subject>USA</dc:subject>
+        <dc:subject>New Mexico</dc:subject>
+        <dct:references scheme="WWW:LINK">http://nationalatlas.gov/atlasftp.html</dct:references>
+        <dct:references scheme="OGC:WMS">http://gstore.unm.edu/apps/rgis/datasets/192fc31f-a713-44f2-98af-a1c8997f3e72/services/ogc/wms?SERVICE=wms&amp;REQUEST=GetCapabilities&amp;VERSION=1.1.1</dct:references>
+        <dct:references scheme="OGC:WFS">http://gstore.unm.edu/apps/rgis/datasets/192fc31f-a713-44f2-98af-a1c8997f3e72/services/ogc/wfs?SERVICE=wfs&amp;REQUEST=GetCapabilities&amp;VERSION=1.0.0</dct:references>
+        <dct:references scheme="WWW:DOWNLOAD">http://gstore.unm.edu/apps/rgis/datasets/192fc31f-a713-44f2-98af-a1c8997f3e72/fedlanl020_nm.original.zip</dct:references>
+        <dct:modified>2014-06-16</dct:modified>
+        <dct:abstract>This map layer portrays the linear federally-owned land features (i.e., national parkways, wild and scenic rivers, etc.) of the United States, Puerto Rico, and the U.S. Virgin Islands. The map layer was created by extracting linear federal land features from the 1:2,000,000-scale individual State DLG files produced by the U.S. Geological Survey. These files were then merged into a single map layer. This is a revised version of the July 2001 map layer.</dct:abstract>
+        <dc:date>2014-06-16</dc:date>
+        <dc:language>eng; USA</dc:language>
+        <dc:rights>otherRestrictions</dc:rights>
+        <ows:BoundingBox crs="urn:x-ogc:def:crs:EPSG:6.11:4326" dimensions="2">
+            <ows:LowerCorner>35.54 -106.73</ows:LowerCorner>
+            <ows:UpperCorner>37.0 -105.49</ows:UpperCorner>
+        </ows:BoundingBox>
+      </csw:Record>
+    xml
+  end
+
+  ##
   # Example XSLT from https://developer.mozilla.org/en-US/docs/XSLT_in_Gecko/Basic_Example
   def simple_xslt
     <<-xml

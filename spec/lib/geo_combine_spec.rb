@@ -2,6 +2,7 @@ require 'spec_helper'
 
 RSpec.describe GeoCombine::Metadata do
   include XmlDocs
+  let(:csw_object) { GeoCombine::Csw.new(simple_csw) }
   describe '#initialize' do
     it 'reads metadata from file if File is readable' do
       expect(File).to receive(:readable?).and_return(true)

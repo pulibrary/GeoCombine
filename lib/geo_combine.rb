@@ -1,4 +1,7 @@
 require 'nokogiri'
+require 'json'
+
+require 'geo_combine/ows'
 
 module GeoCombine
 
@@ -22,7 +25,11 @@ module GeoCombine
     # metadata
     def initialize metadata
       metadata = File.read metadata if File.readable? metadata
-      metadata = Nokogiri::XML(metadata) if metadata.instance_of? String
+      if json?(metadata)
+        metadata = JSON.parse(metadata)
+      else
+        metadata = Nokogiri::XML(metadata) if metadata.instance_of?(String)
+      end
       @metadata = metadata
     end
 
@@ -39,10 +46,38 @@ module GeoCombine
     def to_html
       xsl_html.transform(@metadata).to_html
     end
+
+    ##
+    # Accessor method for Dublin Core namespace
+    # @param [String, Symbol]
+    # @return [Array]
+    def dc(element)
+      @metadata.xpath("//dc:#{element}", 'dc' => 'http://purl.org/dc/elements/1.1/').children.to_a
+    end
+
+    ##
+    # Accessor method for Dublin Core terms namespace
+    # @param [String, Symbol]
+    # @return [Array]
+    def dct(element)
+      @metadata.xpath("//dct:#{element}", 'dct' => 'http://purl.org/dc/terms/').children.to_a
+    end
+
+    ##
+    # Checks if a string is JSON
+    # @param [String]
+    # @return [Boolean]
+    def json?(metadata)
+      JSON.parse(metadata)
+    rescue JSON::ParserError
+      false
+    end
   end
 end
 
+require 'geo_combine/csw'
 require 'geo_combine/fgdc'
 require 'geo_combine/geoblacklight'
+require 'geo_combine/geoblacklight_references'
 require 'geo_combine/iso19139'
 require 'geo_combine/version'
