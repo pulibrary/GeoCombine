@@ -22,4 +22,8 @@ module JsonDocs
   def ckan_metadata
     File.read(File.join(File.dirname(__FILE__), './docs/ckan.json'))
   end
+
+  def ckan_metadata_non_geospatial
+    File.read(File.join(File.dirname(__FILE__), './docs/ckan-non-geospatial.json'))
+  end
 end

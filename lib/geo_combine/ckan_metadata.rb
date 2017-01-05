@@ -21,8 +21,8 @@ module GeoCombine
         dc_identifier_s: @metadata['id'],
         dc_title_s: @metadata['title'],
         dc_rights_s: 'Public',
-        layer_geom_type_s: @metadata['type'],
-        dct_provenance_s: organization['title'],
+        layer_geom_type_s: 'Not Specified', # the CKAN `type` field isn't useful as it's almost always "dataset"
+        dct_provenance_s: organization_name,
         dc_description_s: @metadata['notes'],
         layer_slug_s: @metadata['name'],
         solr_geom: envelope,
@@ -30,8 +30,9 @@ module GeoCombine
       }.select { |_k, v| !v.nil? }
     end
 
-    def organization
-      @metadata['organization'] || { title: '' }
+    def organization_name
+      organization = @metadata['organization']
+      (organization['name'] || organization['title']).capitalize # priority order of name, then title
     end
 
     def envelope
@@ -74,6 +75,10 @@ module GeoCombine
       if @metadata['extras']
         @metadata['extras'].select { |h| h['key'] == key }.collect { |v| v['value'] }[0] || ''
       end
+    end
+
+    def geospatial?
+      extras('metadata_type') =~ /geospatial/im
     end
   end
 end
