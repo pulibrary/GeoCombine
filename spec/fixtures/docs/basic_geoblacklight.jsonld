@@ -1,0 +1,23 @@
+{
+  "@context": "https://raw.githubusercontent.com/geoblacklight/geoblacklight/master/schema/v2.0/context.jsonld",
+  "@id": "http://purl.stanford.edu/bb338jh0716",
+  "@type": "dcat:Dataset",
+  "accessLevel": "public",
+  "conformsTo": "https://raw.githubusercontent.com/geoblacklight/geoblacklight/master/schema/v2.0/geoblacklight-schema.json",
+  "description": "This polygon dataset represents the Hydrologic Sub-Area boundaries for the Russian River basin, as defined by the Calwater 2.2a watershed boundaries. The original CALWATER22 layer (Calwater 2.2a watershed boundaries) was developed as a coverage named calw22a and is administered by the Interagency California Watershed Mapping Committee (ICWMC). ",
+  "geom": "ENVELOPE(-123.387866 38.298024, -122.522658 38.298024, -122.522658 39.399217, -123.387866 39.399217, -123.387866 38.298024)",
+  "geomType": "",
+  "issued": "2002-09-01",
+  "modified": "2014-10-08",
+  "provenance": "Stanford",
+  "resourceType": "Dataset",
+  "slug": "Stanford-bb338jh0716",
+  "subject": [
+    "boundaries",
+    "inlandWaters"
+  ],
+  "temporal": [
+  	"1999"
+  ],
+  "title": "Hydrologic Sub-Area Boundaries: Russian River Watershed, California, 1999"
+}

@@ -4,13 +4,13 @@ module JsonDocs
   ##
   # A basic incomplete, non-compliant GeoBlacklight-Schema json document
   def basic_geoblacklight
-    File.read(File.join(File.dirname(__FILE__), './docs/basic_geoblacklight.json'))
+    File.read(File.join(File.dirname(__FILE__), './docs/basic_geoblacklight.jsonld'))
   end
 
   ##
   # A fully compliant GeoBlacklight-Schema json document
   def full_geoblacklight
-    File.read(File.join(File.dirname(__FILE__), './docs/full_geoblacklight.json'))
+    File.read(File.join(File.dirname(__FILE__), './docs/full_geoblacklight.jsonld'))
   end
 
   ##
