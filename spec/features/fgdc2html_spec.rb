@@ -39,4 +39,8 @@ describe 'FGDC to html' do
       expect(page).to have_tag '#fgdc-metadata-reference-info'
     end
   end
+
+  context 'with another fgdc metadata' do
+    let(:page) {   }
+  end
 end
