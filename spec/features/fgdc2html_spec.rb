@@ -75,5 +75,10 @@ describe 'FGDC to html' do
       expect(page).not_to have_tag 'button'
       expect(page).to have_tag 'dd', text: 'Desert Southwest'
     end
+
+    it 'has a attribute source contribution' do
+      expect(page).to have_tag 'dt', text: 'Contribution'
+      expect(page).to have_tag 'dd', text: 'Net-Zero America report, 2020'
+    end
   end
 end
