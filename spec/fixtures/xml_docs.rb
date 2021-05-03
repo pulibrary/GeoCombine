@@ -23,4 +23,8 @@ module XmlDocs
   def tufts_fgdc
     File.read(File.join(File.dirname(__FILE__), './docs/tufts_fgdc.xml'))
   end
+
+  def princeton_fgdc
+    File.read(File.join(File.dirname(__FILE__), './docs/princeton_fgdc.xml'))
+  end
 end
