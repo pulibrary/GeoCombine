@@ -46,10 +46,11 @@ namespace :geocombine do
     puts "Indexing #{ogm_path} into #{solr_url}"
     solr = RSolr.connect url: solr_url, adapter: :net_http_persistent
     Find.find(ogm_path) do |path|
-      next unless File.basename(path) == 'geoblacklight.json'
+      next unless File.extname(path) == '.json'
       doc = JSON.parse(File.read(path))
       [doc].flatten.each do |record|
         begin
+          next unless record['geoblacklight_version'] == '1.0'
           puts "Indexing #{record['layer_slug_s']}: #{path}" if $DEBUG
           solr.update params: { commitWithin: commit_within, overwrite: true },
                       data: [record].to_json,
